@@ -15,6 +15,7 @@ function onInput(event) {
     fetch.query = value;
     fetch.fetchCountries().then(data => {
       if (data.length >= 1 && data.length <= 10) {
+        PNotify.closeAll();
         updateCountry(data);
       } else {
         data.status === 404
@@ -30,10 +31,5 @@ function onInput(event) {
 function errorMessage(message) {
   PNotify.error({
     text: message,
-    modules: {
-      Desktop: {
-        desktop: true,
-      },
-    },
   });
 }
